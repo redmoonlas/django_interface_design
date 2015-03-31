@@ -1,10 +1,36 @@
-<!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title></title>
-</head>
-<body>
-Uelala
-</body>
-</html>
+{% extends "base.html" %}
+{% load staticfiles i18n bootstrap3 %}
+
+{% block body-id %}{{ slug|slugify }}{% endblock %}
+
+{% block content %}
+    <h1>Uelala</h1>
+{% endblock %}
+
+{% block bottom-scripts %}
+    {{ block.super }}
+    <script src="{% static 'js/jquery.form.min.js' %}"></script>
+{#    <script>#}
+{#        $(function () {#}
+{#            $('button#upload-btn').click( function() {#}
+{#                var options = {#}
+{#                    url: '{% url 'book:add' %}',#}
+{#                    error: function(response) {#}
+{#                        message = '<span class="error">We\'re sorry, but something went wrong. Retry.</span>';#}
+{#                        $('.upload-message').html(message);#}
+{#                        $('fileInput').val('');#}
+{#                        alert('Form Error!');#}
+{#                    },#}
+{#                    success: function(response) {#}
+{#                        message = '<span class="' + response.status + '">' + response.result + '</span> ';#}
+{#                        message = ( response.status == 'success' ) ? message + response.fileLink : message;#}
+{#                        $('.upload-message').html(message);#}
+{#                        $('fileInput').val('');#}
+{#                        alert('Form Submitted!');#}
+{#                    }#}
+{#                };#}
+{#                $('form#newopera').ajaxSubmit(options);#}
+{#            });#}
+{#        });#}
+{#    </script>#}
+{% endblock bottom-scripts %}
