@@ -27,9 +27,7 @@ class ContactWizard(SessionWizardView):
         step = int(self.steps.current)
 
         if step == 0:
-            print "INIT LIST"
-            import copy
-            self.request.session['mysequence'] = ['first', 'second'] # copy.deepcopy(self.mysequence)
+            self.request.session['mysequence'] = ['first', 'second']
 
         mysequence = self.request.session.get('mysequence', [])
 
