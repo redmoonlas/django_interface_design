@@ -1,10 +1,10 @@
 {% extends "base.html" %}
-{% load staticfiles i18n bootstrap3 %}
+{% load staticfiles i18n bootstrap3 site %}
 
 {% block body-id %}{{ slug|slugify }}{% endblock %}
 
 {% block content %}
-    <h1>Uelala</h1>
+    <h1>{% current_domain %}</h1>
 {% endblock %}
 
 {% block bottom-scripts %}
