@@ -1,4 +1,4 @@
-from django.views.generic import TemplateView, CreateView, DetailView
+from django.views.generic import TemplateView, CreateView, DetailView, ListView
 
 from django.shortcuts import render_to_response
 from django.contrib.formtools.wizard.views import SessionWizardView
@@ -48,4 +48,10 @@ class AuthorCreate(CreateView):
 class AuthorDetail(DetailView):
     slug = 'author-detail'
     model = Author
+
+
+class AuthorList(ListView):
+    slug = 'author-list'
+    model = Author
+
 

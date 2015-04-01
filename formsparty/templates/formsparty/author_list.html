@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load staticfiles i18n bootstrap3 %}
+
+{% block body-id %}{{ slug|slugify }}{% endblock %}
+
+{% block content %}
+    <h1> Authors </h1>
+    <ul>
+        {% for author in object_list %}
+            <li>{{ author.name }}</li>
+        {% empty %}
+            <h3> No authors yet. </h3>
+        {% endfor %}
+    </ul>
+{% endblock %}
+
+{% block bottom-scripts %}
+    {{ block.super }}
+{% endblock bottom-scripts %}
