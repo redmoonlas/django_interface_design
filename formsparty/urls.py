@@ -1,8 +1,10 @@
 from django.conf.urls import patterns, url
 
-from formsparty.views import Index, ContactWizard
+from formsparty.views import Index, ContactWizard, AuthorCreate, AuthorDetail
 
 urlpatterns = patterns('',
     url(r'^$', Index.as_view(), name=Index.slug),
     url(r'^wizard/$', ContactWizard.as_view(), name=ContactWizard.slug),
+    url(r'^author/new$', AuthorCreate.as_view(), name=AuthorCreate.slug),
+    url(r'^author/(?P<pk>\d+)/$', AuthorDetail.as_view(), name=AuthorDetail.slug),
 )

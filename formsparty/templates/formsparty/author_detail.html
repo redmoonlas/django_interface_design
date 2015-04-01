@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% load staticfiles i18n bootstrap3 %}
+
+{% block body-id %}{{ slug|slugify }}{% endblock %}
+
+{% block content %}
+    <h1>{{ object.name }}</h1>
+{% endblock %}
+
+{% block bottom-scripts %}
+    {{ block.super }}
+{% endblock bottom-scripts %}

@@ -1,10 +1,10 @@
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, CreateView, DetailView
 
 from django.shortcuts import render_to_response
 from django.contrib.formtools.wizard.views import SessionWizardView
 
 from formsparty.forms import ContactForm1, ContactForm2
-
+from formsparty.models import Author
 
 class Index(TemplateView):
     slug = 'index'
@@ -37,3 +37,15 @@ class ContactWizard(SessionWizardView):
         mysequence.remove(item)
 
         return context
+
+
+class AuthorCreate(CreateView):
+    slug = 'author-create'
+    model = Author
+    fields = ['name']
+
+
+class AuthorDetail(DetailView):
+    slug = 'author-detail'
+    model = Author
+
