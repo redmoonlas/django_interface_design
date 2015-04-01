@@ -13,7 +13,7 @@ class Index(TemplateView):
 
 class ContactWizard(SessionWizardView):
     slug = 'wizard_form'
-    form_list = [ContactForm1, ContactForm2]
+    form_list = [ContactForm2, ContactForm1]
     template_name = 'formsparty/wizardforms.html'
     mysequence = ['first', 'second']
 
