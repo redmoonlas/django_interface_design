@@ -110,4 +110,4 @@ TEMPLATE_DIRS = (
 
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
-SITE_ID = 1
+SITE_ID = os.environ.get('SITE_ID', 1)
