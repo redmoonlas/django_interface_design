@@ -1,9 +1,9 @@
-from django.views.generic import TemplateView, CreateView, DetailView, ListView
+from django.views.generic import TemplateView, CreateView, DetailView, ListView, UpdateView, FormView
 
 from django.shortcuts import render_to_response
 from django.contrib.formtools.wizard.views import SessionWizardView
 
-from formsparty.forms import ContactForm1, ContactForm2
+from formsparty.forms import ContactForm1, ContactForm2, RegistrationForm
 from formsparty.models import Author
 
 class Index(TemplateView):
@@ -55,3 +55,13 @@ class AuthorList(ListView):
     model = Author
 
 
+class AuthorUpdate(UpdateView):
+    slug = 'author-update'
+    model = Author
+
+
+class Registration(FormView):
+    slug = 'registration'
+    template_name = 'formsparty/registration.html'
+    form_class = RegistrationForm
+    success_url = '/'
