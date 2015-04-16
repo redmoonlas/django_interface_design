@@ -12,5 +12,6 @@ if 'herokuapp' in current_site.domain:
 else:
     urlpatterns = patterns('',
         url(r'', include('formsparty.urls', namespace='formsparty')),
+        url(r'^cs/', include('coffescript.urls', namespace='coffescript')),
         url(r'^admin/', include(admin.site.urls)),
     )

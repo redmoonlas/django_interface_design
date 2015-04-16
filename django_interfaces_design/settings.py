@@ -38,8 +38,11 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
+    'django_extensions',
+    'static_precompiler',
     'bootstrap3',
-    'formsparty'
+    'formsparty',
+    'coffescript'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -99,6 +102,18 @@ ALLOWED_HOSTS = ['*']
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 STATIC_ROOT = 'staticfiles'
 STATIC_URL = '/static/'
+
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'static_precompiler.finders.StaticPrecompilerFinder',
+)
+
+STATIC_PRECOMPILER_COMPILERS = (
+    ('static_precompiler.compilers.CoffeeScript', {"executable": "/usr/local/bin/coffee"}),
+)
+
+STATIC_PRECOMPILER_DISABLE_AUTO_COMPILE = True
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
