@@ -17,4 +17,10 @@
 {% block bottom-scripts %}
     {{ block.super }}
     <script src="{% static 'js/intro.js' %}"></script>
+    <script>
+      startGame = function() {
+        return new window.game("{% static 'images/balloon-green.png' %}");
+      };
+      document.addEventListener('DOMContentLoaded', startGame);
+    </script>
 {% endblock bottom-scripts %}
