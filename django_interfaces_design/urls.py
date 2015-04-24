@@ -14,5 +14,6 @@ from django.contrib.sites.models import Site
 urlpatterns = patterns('',
     url(r'', include('formsparty.urls', namespace='formsparty')),
     url(r'^cs/', include('coffescript.urls', namespace='coffescript')),
+    url(r'^invaders/', include('invaders.urls', namespace='invaders')),
     url(r'^admin/', include(admin.site.urls)),
 )

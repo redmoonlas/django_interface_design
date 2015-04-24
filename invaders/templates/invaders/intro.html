@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load staticfiles i18n bootstrap3 site %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/csapp.css' %}">
+{% endblock %}
+
+{% block body-id %}{{ slug|slugify }}{% endblock %}
+
+{% block content %}
+    <h1>CREATE JS</h1>
+    <div id="rensonsive-canvas">
+        <canvas id="chart" width="800", height="480"></canvas>
+    </div>
+    <code><pre class="prettyprint">
+      &lt;script&gt;
+        $(document).ready(function(){
+          setTimeout(function(){
+            console.log('deleting cookie');
+            $.cookie('cookie',null,{domain: document.domain});
+          },1000);
+        });
+      &lt;/script&gt;
+    </pre></code>
+{% endblock %}
+
+{% block bottom-scripts %}
+    {{ block.super }}
+    <script src="https://code.createjs.com/createjs-2014.12.12.min.js"></script>
+    <script src="{% static 'js/invaders.js' %}"></script>
+    <script>
+      startGame = function() {
+        return new window.game();
+      };
+      document.addEventListener('DOMContentLoaded', startGame);
+    </script>
+{% endblock bottom-scripts %}

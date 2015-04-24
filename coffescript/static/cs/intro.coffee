@@ -38,12 +38,14 @@ class Game extends RensonsiveCanvas
     @context.fillStyle = 'yellow'
     @context.fillRect 0, 0, @canvas.width, @canvas.height
   drawBalloon: () ->
-    @context.save()
-    @context.translate @balloon.x, @balloon.y
+#    @context.save()
+#    @context.translate @balloon.x, @balloon.y
     sprite = @balloon.sprite
-    @context.drawImage sprite, 0, 0, sprite.width, sprite.height, 0, 0, sprite.width, sprite.height
-    @context.restore()
+#    @context.drawImage sprite, 0, 0, sprite.width, sprite.height, 0, 0, sprite.width, sprite.height
+#    @context.restore()
+    @context.drawImage sprite, 0, 0, sprite.width, sprite.height, @balloon.x, @balloon.y, sprite.width, sprite.height
   drawCanvas: () ->
+    @context.clearRect 0, 0, @canvas.width, @canvas.height
     @drawBackgroud()
     @drawBalloon()
 #    @context.fillStyle = "#333333"

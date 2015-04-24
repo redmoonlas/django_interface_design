@@ -1,7 +1,7 @@
 from django.views.generic import TemplateView, CreateView, DetailView, ListView, UpdateView, FormView
 
 from django.shortcuts import render_to_response
-from django.contrib.formtools.wizard.views import SessionWizardView
+from formtools.wizard.views import SessionWizardView
 
 from formsparty.forms import ContactForm1, ContactForm2, RegistrationForm
 from formsparty.models import Author

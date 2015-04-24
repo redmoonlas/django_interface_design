@@ -70,14 +70,12 @@
 
     Game.prototype.drawBalloon = function() {
       var sprite;
-      this.context.save();
-      this.context.translate(this.balloon.x, this.balloon.y);
       sprite = this.balloon.sprite;
-      this.context.drawImage(sprite, 0, 0, sprite.width, sprite.height, 0, 0, sprite.width, sprite.height);
-      return this.context.restore();
+      return this.context.drawImage(sprite, 0, 0, sprite.width, sprite.height, this.balloon.x, this.balloon.y, sprite.width, sprite.height);
     };
 
     Game.prototype.drawCanvas = function() {
+      this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
       this.drawBackgroud();
       return this.drawBalloon();
     };
@@ -94,3 +92,5 @@
   this.game = Game;
 
 }).call(this);
+
+//# sourceMappingURL=intro.js.map

@@ -42,7 +42,8 @@ INSTALLED_APPS = (
     'static_precompiler',
     'bootstrap3',
     'formsparty',
-    'coffescript'
+    'coffescript',
+    'invaders'
 )
 
 MIDDLEWARE_CLASSES = (
