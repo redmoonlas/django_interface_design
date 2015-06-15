@@ -43,7 +43,8 @@ INSTALLED_APPS = (
     'bootstrap3',
     'formsparty',
     'coffescript',
-    'invaders'
+    'invaders',
+    'comments'
 )
 
 MIDDLEWARE_CLASSES = (
