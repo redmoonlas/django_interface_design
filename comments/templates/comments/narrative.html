@@ -18,14 +18,45 @@
                 <h4>Left Menu</h4>
             {% endblock left-menu %}
         </div>
-        <div class="narrative col-xs-12 col-sm-10 col-md-7">
+        <div id="narrative-section" class="narrative col-xs-12 col-sm-10">
             {% block narrative %}
-                <h4>Narrative</h4>
+                <div class="row">
+                    <div class="btn-group" role="group" aria-label="..." aria-pressed="false">
+                      <button id="toggle_comments" type="button"
+                              class="btn btn-default" data-toggle="collapse"
+                              data-target="#comments-column" aria-expanded="false">
+                          Comments
+                      </button>
+                      <button type="button" class="btn btn-default">Versions</button>
+                      <button type="button" class="btn btn-default">Help</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <textarea id="my-editor" class="ckeditor">
+                        Lorem Ipsum è un testo segnaposto utilizzato nel settore della tipografia e della stampa.
+                        Lorem Ipsum è considerato il testo segnaposto standard sin dal sedicesimo secolo, quando
+                        un anonimo tipografo prese una cassetta di caratteri e li assemblò per preparare un testo
+                        campione. È sopravvissuto non solo a più di cinque secoli, ma anche al passaggio alla
+                        videoimpaginazione, pervenendoci sostanzialmente inalterato. Fu reso popolare, negli anni ’60,
+                        con la diffusione dei fogli di caratteri trasferibili “Letraset”, che contenevano passaggi
+                        del Lorem Ipsum, e più recentemente da software di impaginazione come Aldus PageMaker,
+                        che includeva versioni del Lorem Ipsum.
+                    </textarea>
+                </div>
             {% endblock narrative %}
         </div>
-        <div class="comments col-xs-12 col-sm-12 col-md-3">
+        <div class="comments col-xs-12 col-sm-12 col-md-3 collapse" id="comments-column">
             {% block comments %}
-                <h4>Comments</h4>
+                <div class="row">
+                    <div class="panel panel-default">
+                      <div class="panel-heading">
+                        <h3 class="panel-title">Panel title</h3>
+                      </div>
+                      <div class="panel-body">
+                        Panel content
+                      </div>
+                    </div>
+                </div>
             {% endblock comments %}
         </div>
     </div>
@@ -34,4 +65,28 @@
 {% block bottom-scripts %}
     {{ block.super }}
     <script src="{% static 'js/jquery.form.min.js' %}"></script>
+    <script src="{% static 'js/ckeditor/ckeditor.js' %}"></script>
+    <script>
+        $(function () {
+            CKEDITOR.replace('my-editor', {
+                toolbar: 'Basic'
+            })
+
+            $('#toggle_comments').click(function() {
+                var btn = $(this)
+                btn.toggleClass('active');
+                btn.attr('aria-pressed', btn.hasClass('active'));
+            });
+
+            $('#comments-column').on('hidden.bs.collapse', function () {
+                var section = $('#narrative-section');
+                section.removeClass('col-md-7');
+            });
+
+            $('#comments-column').on('show.bs.collapse', function () {
+                var section = $('#narrative-section');
+                section.addClass('col-md-7');
+            });
+        });
+    </script>
 {% endblock bottom-scripts %}
