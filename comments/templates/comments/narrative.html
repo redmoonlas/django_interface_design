@@ -47,16 +47,7 @@
         </div>
         <div class="comments col-xs-12 col-sm-12 col-md-3 collapse" id="comments-column">
             {% block comments %}
-                <div class="row">
-                    <div class="panel panel-default">
-                      <div class="panel-heading">
-                        <h3 class="panel-title">Panel title</h3>
-                      </div>
-                      <div class="panel-body">
-                        Panel content
-                      </div>
-                    </div>
-                </div>
+                {% include "comments/comments-list.html" %}
             {% endblock comments %}
         </div>
     </div>
@@ -69,23 +60,41 @@
     <script>
         $(function () {
             CKEDITOR.replace('my-editor', {
-                toolbar: 'Basic'
+                toolbar: 'Basic',
+                comment_get_id: function() {
+                    alert('FROM GEN : GET ID WAS CALLED!!!');
+                    return 1;
+                },
+                comment_onclick: function() {
+                    if (!$('#toggle_comments').hasClass('active')) {
+                        $('#toggle_comments').click();
+
+                    }
+                    $("#comment_3").click();
+{#                    $('#comments-column').animate({#}
+{#                        scrollTop: $("#comment_3").offset().top#}
+{#                    }, 200);#}
+                }
             })
 
             $('#toggle_comments').click(function() {
-                var btn = $(this)
+                var btn = $(this);
                 btn.toggleClass('active');
                 btn.attr('aria-pressed', btn.hasClass('active'));
             });
 
-            $('#comments-column').on('hidden.bs.collapse', function () {
-                var section = $('#narrative-section');
-                section.removeClass('col-md-7');
+            $('#comments-column').on('hidden.bs.collapse', function (event) {
+                if ($(event.target).attr('id') === $(this).attr('id')) {
+                    $('#narrative-section').removeClass('col-md-7');
+                    $('#narrative-section').addClass('full');
+                }
             });
 
-            $('#comments-column').on('show.bs.collapse', function () {
-                var section = $('#narrative-section');
-                section.addClass('col-md-7');
+            $('#comments-column').on('show.bs.collapse', function (event) {
+                if ($(event.target).attr('id') === $(this).attr('id')) {
+                    $('#narrative-section').addClass('col-md-7');
+                    $('#narrative-section').removeClass('full');
+                }
             });
         });
     </script>

@@ -5,10 +5,15 @@
 
 .narrative {
     background: #5C7080;
+}
 
+.narrative.full {
+    -webkit-transition: width 0.3s ease, margin 0.3s ease;
+    -moz-transition: width 0.3s ease, margin 0.3s ease;
+    -o-transition: width 0.3s ease, margin 0.3s ease;
+    transition: width 0.3s ease, margin 0.3s ease;
 }
 
 .comments {
     background: #1CFCFF;
-
 }

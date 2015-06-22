@@ -27,13 +27,13 @@ CKEDITOR.editorConfig = function( config ) {
 
 	config.extraPlugins = 'comments';
 
-	config.comment_get_id = function() {
-		alert('FROM GEN : GET ID WAS CALLED!!!');
-		return 1;
-	}
-
-	config.comment_onclick = function() {
-		alert('FROM : COMMENT WAS CLICKED!!!');
-	}
+	//config.comment_get_id = function() {
+	//	alert('FROM GEN : GET ID WAS CALLED!!!');
+	//	return 1;
+	//}
+    //
+	//config.comment_onclick = function() {
+	//	alert('FROM : COMMENT WAS CLICKED!!!');
+	//}
 
 };
